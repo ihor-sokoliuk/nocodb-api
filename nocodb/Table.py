@@ -152,19 +152,18 @@ class Table:
 
     def delete_record(self, record_id: int) -> bool:
         r = self.noco_db.call_noco(
-            path=f"tables/{self.table_id}/records/{record_id}", method="DELETE"
+            path=f"tables/{self.table_id}/records",
+            method="DELETE",
+            json={"Id": record_id},
         )
+
         return r.json()
 
-    def delete_records(self, record_ids: list[int]) -> bool:
+    def update_record(self, **kwargs) -> None:
         r = self.noco_db.call_noco(
-            path=f"tables/{self.table_id}/records", method="DELETE", json=record_ids
-        )
-        return r.json()
-
-    def update_record(self, record_id: int, **kwargs) -> None:
-        self.noco_db.call_noco(
-            path=f"tables/{self.table_id}/records/{record_id}",
+            path=f"tables/{self.table_id}/records",
             method="PATCH",
             json=kwargs,
         )
+
+        return r.json()

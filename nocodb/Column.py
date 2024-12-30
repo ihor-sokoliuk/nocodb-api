@@ -107,6 +107,7 @@ class Column:
         LongText = DataType("LongText")
         MultiSelect = DataType("MultiSelect")
         Number = DataType("Number")
+        Order = DataType("Order")
         Percent = DataType("Percent")
         PhoneNumber = DataType("PhoneNumber")
         QrCode = DataType("QrCode")
